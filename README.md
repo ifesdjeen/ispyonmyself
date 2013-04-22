@@ -1,6 +1,9 @@
 # Spy on yourself and be merry.
 
-Here's how I spy on myself
+Spying? Spooky!
+OTOH, that helps you to yield interesting metrics from your own day.
+All metrics are subjective, but as long as they're consistent and used wisely, they
+may yield some interesting info. In the end, it doesn't cost anything to log all that stuff, right?
 
 ## Installation
 
@@ -18,9 +21,16 @@ Or install it yourself as:
 
 ## Usage
 
+WORKS ONLY WITH MACRUBY!!!!
+
+```sh
 macruby -S bundle install
 macruby -S rake keylogger:log
+```
 
+## For analysis:
+
+```clojure
 (def alpha-shift-key-mask   (bit-shift-left 1 16)
 (def shift-key-mask         (bit-shift-left 1 17)
 (def control-key-mask       (bit-shift-left 1 18)
@@ -31,14 +41,11 @@ macruby -S rake keylogger:log
 (def function-key-mask      (bit-shift-left 1 23)
 
 (bit-and 131332 (bit-shift-left 1 17))
+```
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Probably you're not reading this anyways.
 
 ## License
 
