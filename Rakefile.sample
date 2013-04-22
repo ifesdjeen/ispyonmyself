@@ -1,0 +1,28 @@
+require "bundler/gem_tasks"
+require "lib/keylogger"
+require "eventoverse"
+
+namespace :keylogger do
+  task :log do
+    Keylogger.run!("/Users/ifesdjeen/analytics/new")
+  end
+end
+
+
+namespace :udp_stress do
+  task :log do
+    Eventoverse.configure!({
+        :host => "127.0.0.1",
+        :application_name => "personal_analytics",
+        :env => "local",
+        :udp => {:port => 3333}})
+
+    100.times do |j|
+    1000.times do |i|
+      sleep 0.001
+      Eventoverse.reporter.publish_message("event_type", {:some => "value"})
+    end
+      sleep 5
+    end
+  end
+end

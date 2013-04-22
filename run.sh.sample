@@ -1,0 +1,15 @@
+#!/bin/zsh --login
+
+set -e
+
+function runit {
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+    cd /Users/ifesdjeen/hackage/keylogger
+    rvm use macruby
+    macruby -S rake keylogger:log
+}
+
+until runit; do
+    echo "Crashed with exit code $?.  Respawning.." >&2
+    sleep 1
+done
